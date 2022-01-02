@@ -29,7 +29,6 @@ client.setInterval(async () => {
       { type: 'WATCHING' },
     )
   }
-  console.log("/nwe're still going")
 }, 1 * 60 * 1000)
 
 client.login(process.env.DISCORD_API_TOKEN)
