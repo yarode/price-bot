@@ -4,13 +4,16 @@ const dotenv = require('dotenv')
 
 dotenv.config()
 
-const SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/1hive/honeyswap-xdai'
+const SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange'
 
 const PRICE_QUERY = gql`
   query {
     token(id: "${process.env.TOKEN_ID}") {
-      derivedNativeCurrency
+      derivedAVAX
       symbol
+    }
+    bundle(id: 1) {
+      avaxPrice
     }
   }
 `
@@ -25,7 +28,7 @@ const fetchData = async () => {
 
 exports.getTokenPrice = async () => {
   const res = await fetchData()
-  const price = parseFloat(res.data.token.derivedNativeCurrency).toFixed(2)
+  const price = parseFloat(res.data.token.derivedAVAX * res.data.bundle.avaxPrice).toFixed(2)
   return price
 }
 

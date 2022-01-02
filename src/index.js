@@ -10,7 +10,7 @@ dotenv.config()
 const client = new Client()
 
 // eslint-disable-next-line
-client.on('ready', () => console.log(`Bot successfully started as ${client.user.tag} 🐝`))
+client.on('ready', () => console.log(`Bot successfully started as ${client.user.tag}`))
 
 // Updates token price on bot's nickname every X amount of time
 client.setInterval(async () => {
