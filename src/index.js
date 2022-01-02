@@ -21,6 +21,7 @@ client.setInterval(async () => {
   client.guilds.cache.forEach(async (guild) => {
     const botMember = guild.me
     await botMember.setNickname(`${symbol}: $${numberWithCommas(price)}`)
+    console.log(`Updated to - ${symbol}: $${numberWithCommas(price)}`)
   })
 
   if (circSupply) {
@@ -29,6 +30,6 @@ client.setInterval(async () => {
       { type: 'WATCHING' },
     )
   }
-}, 1 * 60 * 1000)
+}, 5 * 60 * 1000)
 
 client.login(process.env.DISCORD_API_TOKEN)
