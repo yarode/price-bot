@@ -30,6 +30,6 @@ client.setInterval(async () => {
       { type: 'WATCHING' },
     )
   }
-}, 5 * 60 * 1000)
+}, 1 * 60 * 1000)
 
 client.login(process.env.DISCORD_API_TOKEN)
