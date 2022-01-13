@@ -1,5 +1,3 @@
-const gql = require('graphql-tag')
-const { GraphQLWrapper } = require('@aragon/connect-thegraph')
 const dotenv = require('dotenv')
 
 dotenv.config()
@@ -7,24 +5,6 @@ dotenv.config()
 const Web3 = require("web3")
 const provider = new Web3.providers.HttpProvider(process.env.WEB3_URL)
 const web3 = new Web3(provider)
-
-const SUBGRAPH_URL = 'https://api.thegraph.com/subgraphs/name/traderjoe-xyz/exchange'
-
-const PRICE_QUERY = gql`
-  query {
-    token(id: "${process.env.TOKEN_ID}") {
-      symbol
-    }
-  }
-`
-
-const fetchData = async () => {
-  const graphqlClient = new GraphQLWrapper(SUBGRAPH_URL)
-  const result = await graphqlClient.performQuery(PRICE_QUERY)
-
-  if (!result.data) return undefined
-  return result
-}
 
 async function getBalance(contract) {
   balance = await contract.methods.balanceOf(process.env.SOURCE_ADDRESS).call()
