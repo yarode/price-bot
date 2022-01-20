@@ -24,12 +24,14 @@ client.setInterval(async () => {
     console.log(`Updated to - ${symbol}: $${numberWithCommas(price)}`)
   })
 
+  console.log(circSupply)
+
   if (circSupply) {
     client.user.setActivity(
       `MC: $${numberWithCommas(Math.round(price * circSupply))}`,
       { type: 'WATCHING' },
     )
   }
-}, 1 * 60 * 1000)
+}, parseFloat(process.env.INTERVAL) * 60 * 1000)
 
 client.login(process.env.DISCORD_API_TOKEN)
