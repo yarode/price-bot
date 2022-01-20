@@ -24,8 +24,6 @@ client.setInterval(async () => {
     console.log(`Updated to - ${symbol}: $${numberWithCommas(price)}`)
   })
 
-  console.log(circSupply)
-
   if (circSupply) {
     client.user.setActivity(
       `MC: $${numberWithCommas(Math.round(price * circSupply))}`,
